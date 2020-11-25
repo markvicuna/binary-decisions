@@ -17,6 +17,7 @@
 
 #alert {
   background-color: red;
+  transition: 1s;
 }
 
 .rmv-btn {

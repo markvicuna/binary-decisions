@@ -34,7 +34,7 @@
           <span class="rmv-btn" tabindex="-1"></span>
         </div>
         <div class="option-line">
-          <input type="te-t" class="option" placeholder="Option" />
+          <input type="text" class="option" placeholder="Option" />
           <span class="rmv-btn" tabinde-="-1"></span>
         </div>
         <div class="option-line">
@@ -50,11 +50,14 @@
       <a href="#" id="option-1"></a>
       <span>or</span>
       <a href="#" id="option-2"></a>
-      <h3>Progress: <span id="progress"></span>%</h3>
+      <h3>Progress: <span id="progress">0</span>%</h3>
+      <progress id="progress-bar" max="100" value="0"></progress>
     </div>
 
     <div id="results-view">
       <h3>Here are your priorities, in order.</h3>
+      <div id="results"></div>
+      <button id="restart-btn">Start over</button>
     </div>
 
     <script src="index.js"></script>

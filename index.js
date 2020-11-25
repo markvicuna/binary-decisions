@@ -2,25 +2,27 @@
 
 const optionList = [];
 const decisionList = [];
-let decisionIndex = 0;
 
-const addBtn = document.querySelector("#add-btn");
-const rmvBtn = document.getElementsByClassName("rmv-btn");
-const startBtn = document.querySelector("#start-btn");
-
-const option1 = document.querySelector("#option-1");
-const option2 = document.querySelector("#option-2");
-
-const entryGroup = document.querySelector("#option-group");
-const entries = document.getElementsByClassName("option");
-
-const results = document.querySelector("#results");
 const startView = document.querySelector("#start-view");
 const decisionView = document.querySelector("#decision-view");
 const resultsView = document.querySelector("#results-view");
 
+const addBtn = document.querySelector("#add-btn");
+const rmvBtn = document.getElementsByClassName("rmv-btn");
+const startBtn = document.querySelector("#start-btn");
+const restartBtn = document.querySelector("#restart-btn");
+
+const optionGroup = document.querySelector("#option-group");
+const options = document.getElementsByClassName("option");
+
+const option1 = document.querySelector("#option-1");
+const option2 = document.querySelector("#option-2");
+
+const results = document.querySelector("#results");
+
 const alertBox = document.querySelector("#alert");
-const progressBar = document.querySelector("#progress");
+const progressText = document.querySelector("#progress");
+const progressBar = document.querySelector("#progress-bar");
 
 // Class: Entry
 class Entry {
@@ -34,19 +36,10 @@ class Entry {
   }
 }
 
-// Show Alert
-
-const showAlert = (message) => {
-  alertBox.textContent = message;
-  setTimeout(() => {
-    alertBox.textContent = "";
-  }, 3000);
-};
-
 // Add Priority
 addBtn.addEventListener("click", (e) => {
-  if (entryGroup.childElementCount > 9) {
-    showAlert("stop it dude");
+  if (optionGroup.childElementCount > 9) {
+    showAlert("Max 10 options allowed.");
     return;
   }
 
@@ -64,9 +57,9 @@ addBtn.addEventListener("click", (e) => {
   div.appendChild(input);
   div.appendChild(removeButton);
 
-  entryGroup.appendChild(div);
+  optionGroup.appendChild(div);
 
-  if (entryGroup.childElementCount > 3) {
+  if (optionGroup.childElementCount > 3) {
     for (let i = 0; i < rmvBtn.length; i++) {
       rmvBtn[i].style.display = "inline-flex";
     }
@@ -74,12 +67,12 @@ addBtn.addEventListener("click", (e) => {
 });
 
 // Remove Entry
-entryGroup.addEventListener("click", (e) => {
+optionGroup.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("rmv-btn")) {
     e.target.parentElement.remove();
   }
-  if (entryGroup.childElementCount < 4) {
+  if (optionGroup.childElementCount < 4) {
     for (let i = 0; i < rmvBtn.length; i++) {
       rmvBtn[i].style.display = "none";
     }
@@ -88,23 +81,19 @@ entryGroup.addEventListener("click", (e) => {
 
 // Press Start
 startBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  for (let i = 0; i < entries.length; i++) {
-    if (entries[i].value == "") {
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value == "") {
       showAlert("No empty fields, please.");
       return;
     }
   }
 
-  for (let i = 0; i < entries.length; i++) {
-    optionList.push(new Entry(entries[i].value));
+  for (let i = 0; i < options.length; i++) {
+    optionList.push(new Entry(options[i].value));
   }
 
-  let n = optionList.length;
-
-  for (let i = 0; i < n; i++) {
-    for (let j = i + 1; j < n; j++) {
+  for (let i = 0; i < optionList.length; i++) {
+    for (let j = i + 1; j < optionList.length; j++) {
       const arr = [optionList[i], optionList[j]];
       decisionList.push(shuffle(arr));
     }
@@ -112,28 +101,29 @@ startBtn.addEventListener("click", (e) => {
 
   shuffle(decisionList);
 
-  console.log(decisionList);
-
   startView.remove();
   decisionView.style.display = "block";
 
-  option1.textContent = decisionList[decisionIndex][0].name;
-  option2.textContent = decisionList[decisionIndex][1].name;
-  progressBar.textContent = calculateProgress();
+  option1.textContent = decisionList[0][0].name;
+  option2.textContent = decisionList[0][1].name;
 });
 
 // Battle it out
 
 option1.addEventListener("click", (e) => {
   optionList.find((entry) => entry.name == e.target.textContent).addPoint();
-  decisionIndex++;
-  compareOptions();
+  nextDecision();
 });
 
 option2.addEventListener("click", (e) => {
   optionList.find((entry) => entry.name == e.target.textContent).addPoint();
-  decisionIndex++;
-  compareOptions();
+  nextDecision();
+});
+
+// Start Over Button
+
+restartBtn.addEventListener("click", (e) => {
+  window.location.reload();
 });
 
 // Functions
@@ -146,8 +136,9 @@ const shuffle = (arr) => {
 };
 
 const calculateProgress = () => {
-  let increment = 100 / decisionList.length;
-  return Math.round(decisionIndex * increment);
+  const totalDecisions = (optionList.length ** 2 - optionList.length) / 2;
+  const increment = 100 / totalDecisions;
+  return Math.round((totalDecisions - decisionList.length) * increment);
 };
 
 const loadResults = () => {
@@ -161,17 +152,26 @@ const loadResults = () => {
     ol.appendChild(item);
   });
 
-  resultsView.appendChild(ol);
+  results.appendChild(ol);
 };
 
-const compareOptions = () => {
-  if (decisionIndex < decisionList.length) {
-    option1.textContent = decisionList[decisionIndex][0].name;
-    option2.textContent = decisionList[decisionIndex][1].name;
-    progressBar.textContent = calculateProgress();
+const nextDecision = () => {
+  decisionList.shift();
+  if (decisionList.length > 0) {
+    option1.textContent = decisionList[0][0].name;
+    option2.textContent = decisionList[0][1].name;
+    progressText.textContent = calculateProgress();
+    progressBar.value = calculateProgress();
   } else {
     decisionView.remove();
     resultsView.style.display = "block";
     loadResults();
   }
+};
+
+const showAlert = (message) => {
+  alertBox.textContent = message;
+  setTimeout(() => {
+    alertBox.textContent = "";
+  }, 3000);
 };

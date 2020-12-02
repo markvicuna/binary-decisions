@@ -4,61 +4,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;400&display=swap"
+      rel="stylesheet"
+    />
     <title>Binary Decisions</title>
   </head>
 
   <body>
-    <h1>Binary Decisions</h1>
+    <h1 id="title">Binary Decisions</h1>
 
-    <p>
-      Binary decisions is an easy way to sort tasks or activities in order of
-      importance/urgency by creating a set of decisions for you to make between
-      two options at a time.
-    </p>
-    <p>
-      It can also be used to rank your all-time favorite movies or to discover
-      who your favorite artist is!
-    </p>
-    <p>
-      Enter up to 10 options, press start, and work through the binary decisions
-      to get to receive your results.
-    </p>
-
-    <div id="alert"></div>
+    <div id="description">
+      <p>
+        Struggling to figure out which tasks to prioritize? Can't decide in what
+        order to rank your favorite movies?
+      </p>
+      <p>
+        Binary decisions is an easy way to sort options in order of importance
+        by creating a set of decisions for you to make between two options at a
+        time.
+      </p>
+      <p class="highlight">
+        Enter up to 10 options (could be tasks, chores, movies) and work through
+        the binary decisions to receive your results.
+      </p>
+    </div>
 
     <div id="start-view">
-      <button id="add-btn">Add Option</button>
+      <button id="add-btn" class="btn">Add Option</button>
       <div id="option-group">
         <div class="option-line">
           <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn" tabindex="-1"></span>
+          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
         </div>
         <div class="option-line">
           <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn" tabinde-="-1"></span>
+          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
         </div>
         <div class="option-line">
           <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn" tabindex="-1"></span>
+          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
         </div>
       </div>
-      <button id="start-btn">Start</button>
+      <button id="start-btn" class="btn">Start</button>
     </div>
 
-    <div id="decision-view">
-      <h3>Which one do you choose?</h3>
-      <a href="#" id="option-1"></a>
-      <span>or</span>
-      <a href="#" id="option-2"></a>
-      <h3>Progress: <span id="progress">0</span>%</h3>
-      <progress id="progress-bar" max="100" value="0"></progress>
+    <div id="decision-view" class="is-hidden">
+      <h3 class="sub-title">Which is more important?</h3>
+      <h4 id="note">(If you're unsure, go with your gut).</h4>
+      <div id="choice-group">
+        <div id="option-1" class="choice-box"></div>
+        <div id="option-2" class="choice-box"></div>
+      </div>
+      <div id="progress">
+        <h3 class="sub-title">Progress: <span id="progress-value">0</span>%</h3>
+        <progress id="progress-bar" max="100" value="0"></progress>
+      </div>
     </div>
 
-    <div id="results-view">
-      <h3>Here are your priorities, in order.</h3>
-      <div id="results"></div>
-      <button id="restart-btn">Start over</button>
+    <div id="results-view" class="is-hidden">
+      <div id="results-view-container">
+        <h3 class="sub-title">Here are your results, in order.</h3>
+        <div id="results"></div>
+        <button id="restart-btn" class="btn">Start over</button>
+      </div>
     </div>
+
+    <footer>Created by Mark Vicuña</footer>
 
     <script src="index.js"></script>
   </body>

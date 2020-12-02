@@ -1,36 +1,247 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#decision-view {
-  display: none;
+button {
+  text-decoration: none;
+  background: none;
+  border: none;
 }
 
-#results-view {
-  display: none;
+body {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  background-size: cover;
+  padding: 40px;
+}
+
+#title {
+  font-family: "Rock Salt", cursive;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#description {
+  text-align: center;
+  margin: 0 auto 28px;
+  font-family: "Londrina Solid", cursive;
+  font-weight: 100;
+}
+
+#description p {
+  margin-bottom: 10px;
+}
+
+.btn {
+  font-family: "Londrina Solid", cursive;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: rgb(37, 37, 37);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  width: 200px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: rgb(37, 37, 37);
+  background-color: white;
+}
+
+.btn-alerted {
+  background-color: rgb(255, 60, 60);
+  color: white;
+}
+
+.btn-alerted:hover {
+  background-color: rgb(255, 60, 60);
+  color: white;
+}
+
+#start-view {
+  width: 200px;
+  margin: 0 auto;
+}
+
+#option-group {
+  margin: 10px 0;
 }
 
 .option-line {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
-#alert {
-  background-color: red;
-  transition: 1s;
+.option-line input {
+  color: rgb(37, 37, 37);
+  width: 200px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Londrina Solid", cursive;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .rmv-btn {
-  display: none;
+  font-family: "Rock Salt", cursive;
+  font-weight: bold;
+  display: inline-flex;
   cursor: pointer;
   width: 20px;
   height: 16px;
   justify-content: center;
   align-items: center;
   color: white;
-  margin-left: 8px;
+  margin-left: 4px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("./img/delete.svg");
+}
+
+.rmv-btn:hover {
+  font-size: 20px;
+}
+
+.sub-title {
+  text-align: center;
+  font-family: "Londrina Solid", cursive;
+  font-weight: 400;
+}
+
+#note {
+  text-align: center;
+  font-family: "Londrina Solid", cursive;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#choice-group {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 20px;
+}
+
+.choice-box {
+  height: 100px;
+  width: 140px;
+  margin: 0 10px;
+  font-family: "Londrina Solid", cursive;
+  text-transform: uppercase;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.choice-box:hover {
+  background-color: white;
+  color: rgb(37, 37, 37);
+}
+
+#progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#progress-value {
+  font-family: "Londrina Solid", cursive;
+}
+
+#progress-bar {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  margin-top: 10px;
+}
+
+#progress-bar::-webkit-progress-bar {
+  background-color: rgb(37, 37, 37);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+#progress-bar::-webkit-progress-value {
+  background-color: white;
+  border-radius: 5px;
+}
+
+#results-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#results {
+  margin: 10px 0;
+  width: 200px;
+}
+
+.result-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: rgb(37, 37, 37);
+  width: 200px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Londrina Solid", cursive;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.result-number {
+  font-family: "Rock Salt", cursive;
+  font-weight: bold;
+  display: inline-flex;
+  width: 27px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+  font-family: "Rock Salt", cursive;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.highlight {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.is-hidden {
+  display: none;
 }

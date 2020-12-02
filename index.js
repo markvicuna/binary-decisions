@@ -20,8 +20,7 @@ const option2 = document.querySelector("#option-2");
 
 const results = document.querySelector("#results");
 
-const alertBox = document.querySelector("#alert");
-const progressText = document.querySelector("#progress");
+const progressText = document.querySelector("#progress-value");
 const progressBar = document.querySelector("#progress-bar");
 
 // Class: Entry
@@ -39,7 +38,7 @@ class Entry {
 // Add Priority
 addBtn.addEventListener("click", (e) => {
   if (optionGroup.childElementCount > 9) {
-    showAlert("Max 10 options allowed.");
+    showAlert(addBtn, "Add Option", "Max 10 options allowed.");
     return;
   }
 
@@ -51,6 +50,7 @@ addBtn.addEventListener("click", (e) => {
   input.placeholder = "Option";
 
   const removeButton = document.createElement("span");
+  removeButton.textContent = "x";
   removeButton.classList.add("rmv-btn");
   removeButton.tabIndex = -1;
 
@@ -61,7 +61,7 @@ addBtn.addEventListener("click", (e) => {
 
   if (optionGroup.childElementCount > 3) {
     for (let i = 0; i < rmvBtn.length; i++) {
-      rmvBtn[i].style.display = "inline-flex";
+      rmvBtn[i].classList.remove("is-hidden");
     }
   }
 });
@@ -74,7 +74,7 @@ optionGroup.addEventListener("click", (e) => {
   }
   if (optionGroup.childElementCount < 4) {
     for (let i = 0; i < rmvBtn.length; i++) {
-      rmvBtn[i].style.display = "none";
+      rmvBtn[i].classList.add("is-hidden");
     }
   }
 });
@@ -83,7 +83,7 @@ optionGroup.addEventListener("click", (e) => {
 startBtn.addEventListener("click", (e) => {
   for (let i = 0; i < options.length; i++) {
     if (options[i].value == "") {
-      showAlert("No empty fields, please.");
+      showAlert(startBtn, "Start", "No empty fields, please.");
       return;
     }
   }
@@ -101,8 +101,8 @@ startBtn.addEventListener("click", (e) => {
 
   shuffle(decisionList);
 
-  startView.remove();
-  decisionView.style.display = "block";
+  startView.classList.add("is-hidden");
+  decisionView.classList.remove("is-hidden");
 
   option1.textContent = decisionList[0][0].name;
   option2.textContent = decisionList[0][1].name;
@@ -143,16 +143,25 @@ const calculateProgress = () => {
 
 const loadResults = () => {
   optionList.sort((a, b) => b.score - a.score);
-
-  const ol = document.createElement("ol");
+  let i = 1;
 
   optionList.forEach((entry) => {
-    const item = document.createElement("li");
-    item.textContent = entry.name;
-    ol.appendChild(item);
-  });
+    const div = document.createElement("div");
+    div.classList.add("result-line");
 
-  results.appendChild(ol);
+    const number = document.createElement("span");
+    number.classList.add("result-number");
+    number.textContent = i;
+    div.appendChild(number);
+
+    const item = document.createElement("div");
+    item.classList.add("result-item");
+    item.textContent = entry.name;
+    div.appendChild(item);
+
+    results.appendChild(div);
+    i++;
+  });
 };
 
 const nextDecision = () => {
@@ -163,15 +172,21 @@ const nextDecision = () => {
     progressText.textContent = calculateProgress();
     progressBar.value = calculateProgress();
   } else {
-    decisionView.remove();
-    resultsView.style.display = "block";
+    decisionView.classList.add("is-hidden");
+    resultsView.classList.remove("is-hidden");
     loadResults();
   }
 };
 
-const showAlert = (message) => {
-  alertBox.textContent = message;
+const showAlert = (button, value, message) => {
+  button.textContent = message;
+  button.classList.add("btn-alerted");
   setTimeout(() => {
-    alertBox.textContent = "";
+    button.textContent = value;
+    button.classList.remove("btn-alerted");
   }, 3000);
+};
+
+const reset = () => {
+  //reset
 };

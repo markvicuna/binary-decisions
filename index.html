@@ -14,67 +14,86 @@
       href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;400&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/4b03d3624c.js" crossorigin="anonymous"></script>
     <title>Binary Decisions</title>
   </head>
 
   <body>
-    <h1 id="title">Binary Decisions</h1>
+    <div class="container">
 
-    <div id="description">
-      <p>
-        Struggling to figure out which tasks to prioritize? Can't decide in what
-        order to rank your favorite movies?
-      </p>
-      <p>
-        Binary Decisions is an easy way to rank your options by deciding between two options at a time.
-      </p>
-      <p class="highlight">
-        Enter up to 10 options (could be tasks, chores, movies) and work through
-        the binary decisions to receive your results.
-      </p>
-    </div>
+      <header id="header">
+        <h1 id="header-title">Binary Decisions</h1>
+        <h2 id="header-subtitle">Created by Mark Vicuña</h2>
+      </header>
 
-    <div id="start-view">
-      <button id="add-btn" class="btn">Add Option</button>
-      <div id="option-group">
-        <div class="option-line">
-          <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
+
+      <div id="description">
+      	<button id="desc-btn" class="btn">Say what?!</button>
+      	<div id="description-text" class="is-hidden">
+      	  <p>
+      	    Struggling to figure out which tasks to prioritize? Can't decide in what
+      	    order to rank your favorite movies?
+      	  </p>
+      	  <p>
+      	    Binary Decisions is an easy way to rank your options by deciding between two options at a time.
+      	  </p>
+      	  <p class="highlight">
+      	    Enter up to 10 options (could be tasks, chores, movies) and work through
+      	    the binary decisions to receive your results.
+      	  </p>
+      	</div>
+      </div>
+  
+      <div id="start-view">
+        <button id="add-btn" class="btn">Add Option</button>
+        <div id="option-group">
+          <div class="option-line">
+            <input type="text" class="option" placeholder="Option" />
+            <div class="rmv-btn is-hidden" tabindex="-1">x</div>
+          </div>
+          <div class="option-line">
+            <input type="text" class="option" placeholder="Option" />
+            <div class="rmv-btn is-hidden" tabindex="-1">x</div>
+          </div>
+          <div class="option-line">
+            <input type="text" class="option" placeholder="Option" />
+            <div class="rmv-btn is-hidden" tabindex="-1">x</div>
+          </div>
         </div>
-        <div class="option-line">
-          <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
+        <button id="start-btn" class="btn">Start</button>
+      </div>
+  
+      <div id="decision-view" class="is-hidden">
+        <h3 class="subtitle">Which is more important?</h3>
+        <h4 id="note">(If you're unsure, go with your gut).</h4>
+        <div id="choice-group">
+          <div id="option-1" class="choice-box"></div>
+          <div id="option-2" class="choice-box"></div>
         </div>
-        <div class="option-line">
-          <input type="text" class="option" placeholder="Option" />
-          <span class="rmv-btn is-hidden" tabindex="-1">x</span>
+        <div id="progress">
+          <h3 class="subtitle">Progress: <span id="progress-value">0</span>%</h3>
+          <progress id="progress-bar" max="100" value="0"></progress>
         </div>
       </div>
-      <button id="start-btn" class="btn">Start</button>
-    </div>
-
-    <div id="decision-view" class="is-hidden">
-      <h3 class="sub-title">Which is more important?</h3>
-      <h4 id="note">(If you're unsure, go with your gut).</h4>
-      <div id="choice-group">
-        <div id="option-1" class="choice-box"></div>
-        <div id="option-2" class="choice-box"></div>
+  
+      <div id="results-view" class="is-hidden">
+        <div id="results-container">
+          <h3 class="subtitle">Here are your results, in order.</h3>
+          <div id="results"></div>
+          <button id="restart-btn" class="btn">Start over</button>
+        </div>
       </div>
-      <div id="progress">
-        <h3 class="sub-title">Progress: <span id="progress-value">0</span>%</h3>
-        <progress id="progress-bar" max="100" value="0"></progress>
-      </div>
-    </div>
 
-    <div id="results-view" class="is-hidden">
-      <div id="results-view-container">
-        <h3 class="sub-title">Here are your results, in order.</h3>
-        <div id="results"></div>
-        <button id="restart-btn" class="btn">Start over</button>
-      </div>
-    </div>
+      <footer class="footer">
+        <!-- <span class="social-text">Find me on...</span> -->
+        <div class="social-icons">
+          <a href="https://github.com/markvicuna/" target="_blank"><i class="fab fa-github social-icon"></i></a>
+          <a href="https://www.instagram.com/modernratio/" target="_blank"><i class="fab fa-instagram social-icon"></i></a>
+          <a href="https://open.spotify.com/track/6gaPfdDfLQucC6nAzD65BC" target="_blank"><i class="fab fa-spotify social-icon"></i></a>
+        </div>
+      </footer>
 
-    <footer>Created by Mark Vicuña</footer>
+    </div>
 
     <script src="index.js"></script>
   </body>

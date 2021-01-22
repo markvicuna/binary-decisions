@@ -3,10 +3,14 @@
 const optionList = [];
 const decisionList = [];
 
+const description = document.querySelector("#description");
+const descriptionText = document.querySelector("#description-text");
+
 const startView = document.querySelector("#start-view");
 const decisionView = document.querySelector("#decision-view");
 const resultsView = document.querySelector("#results-view");
 
+const descBtn = document.querySelector('#desc-btn')
 const addBtn = document.querySelector("#add-btn");
 const rmvBtn = document.getElementsByClassName("rmv-btn");
 const startBtn = document.querySelector("#start-btn");
@@ -35,10 +39,31 @@ class Entry {
   }
 }
 
-// Add Priority
+// Show Description
+
+descBtn.addEventListener("click", (e) => {
+  if (descriptionText.classList.contains("is-hidden")) {
+    descriptionText.classList.remove("is-hidden");
+    startView.classList.add("is-hidden");
+
+    descBtn.textContent = "Close"
+    descBtn.classList.add("red");
+
+  } else {
+    descriptionText.classList.add("is-hidden");
+    startView.classList.remove("is-hidden");
+
+    descBtn.textContent = "I understand now.";
+    descBtn.classList.add("white");
+    descBtn.classList.remove("red");
+  }
+
+})
+
+// Add Entry
 addBtn.addEventListener("click", (e) => {
   if (optionGroup.childElementCount > 9) {
-    showAlert(addBtn, "Add Option", "Max 10 options allowed.");
+    showAlert(addBtn, "Add Option", "Max 10 options allowed");
     return;
   }
 
@@ -49,7 +74,7 @@ addBtn.addEventListener("click", (e) => {
   input.classList.add("option");
   input.placeholder = "Option";
 
-  const removeButton = document.createElement("span");
+  const removeButton = document.createElement("div");
   removeButton.textContent = "x";
   removeButton.classList.add("rmv-btn");
   removeButton.tabIndex = -1;
@@ -101,6 +126,7 @@ startBtn.addEventListener("click", (e) => {
 
   shuffle(decisionList);
 
+  description.classList.add("is-hidden");
   startView.classList.add("is-hidden");
   decisionView.classList.remove("is-hidden");
 
@@ -149,7 +175,7 @@ const loadResults = () => {
     const div = document.createElement("div");
     div.classList.add("result-line");
 
-    const number = document.createElement("span");
+    const number = document.createElement("div");
     number.classList.add("result-number");
     number.textContent = i;
     div.appendChild(number);
@@ -184,7 +210,7 @@ const showAlert = (button, value, message) => {
   setTimeout(() => {
     button.textContent = value;
     button.classList.remove("btn-alerted");
-  }, 3000);
+  }, 2000);
 };
 
 const reset = () => {

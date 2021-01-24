@@ -11,6 +11,8 @@
 
 }
 
+
+
 /* ANIMATIONS */
 
 @-webkit-keyframes bg-scrolling {
@@ -71,7 +73,7 @@ body {
   background-color: rgb(37, 37, 37);
   color: rgb(255, 255, 255);
 
-  background: url("./img/dark-grid-bg.png") repeat 0 0;
+  background: url("./img/dark-grid-bg-num.png") repeat 0 0;
   -webkit-animation: bg-scrolling var(--bg-animation-duration) infinite;
   -moz-animation: bg-scrolling var(--bg-animation-duration) infinite;
   -o-animation: bg-scrolling var(--bg-animation-duration) infinite;
@@ -117,7 +119,7 @@ body {
 }
 
 #header {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   margin-top: 10px;
 }
 
@@ -126,8 +128,8 @@ body {
   line-height: 1;
   font-weight: bold;
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin-bottom: 9px;
 }
 
 #header-subtitle {
@@ -135,7 +137,7 @@ body {
   line-height: 1;
   font-weight: bold;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   margin-bottom: 5px;
 }
 
@@ -143,14 +145,14 @@ body {
   text-align: center;
   font-family: "Londrina Solid", sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #description-text {
   text-align: center;
   font-family: "Londrina Solid", sans-serif;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 18px;
   padding: 20px;
   border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
@@ -176,7 +178,7 @@ body {
 }
 
 #description p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer {
@@ -191,7 +193,7 @@ body {
 }
 
 .social-icons {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .social-icons a {
@@ -200,12 +202,12 @@ body {
 
 .social-icon {
   margin: 0 5px;
-  font-size: 26px;
+  font-size: 32px;
 }
 
 .btn {
   font-family: "Londrina Solid", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-transform: uppercase;
   background-color: rgb(37, 37, 37);
   border: 1px solid white;
@@ -241,7 +243,7 @@ body {
   border-radius: 5px;
   text-align: center;
   font-family: "Londrina Solid", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   padding: 5px;
   font-weight: 400;
 }
@@ -249,7 +251,7 @@ body {
 .rmv-btn {
   font-family: "Rock Salt", sans-serif;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1;
   overflow: hidden;
   padding: 0 5px;
@@ -272,7 +274,7 @@ body {
   text-align: center;
   font-family: "Londrina Solid", sans-serif;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #choice-group {
@@ -283,7 +285,7 @@ body {
 
 .choice-box {
   font-family: "Londrina Solid", sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   text-transform: uppercase;
   background-color: rgb(37, 37, 37);
   color: white;
@@ -313,8 +315,8 @@ body {
 
 #progress-bar {
   -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
+  width: 60%;
+  height: 10px;
   margin-top: 10px;
 }
 
@@ -353,14 +355,14 @@ body {
   border-radius: 5px;
   text-align: center;
   font-family: "Londrina Solid", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
 }
 
 .result-number {
   font-family: "Rock Salt", sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   color: rgb(255, 60, 60);
   margin-right: 5px;
@@ -369,7 +371,7 @@ body {
 
 .highlight {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .is-hidden {
@@ -379,6 +381,24 @@ body {
 .is-active {
   display: block;
 }
+
+@media only screen and (min-width: 600px) {
+  #header-title {
+    font-size: 36px;
+  }
+
+  #header-subtitle {
+    font-size: 16px;
+  }
+
+  #description-text {
+    font-size: 20px;
+  }
+  
+  .highlight {
+    font-size: 22px;
+  }
+} 
 
 @media (hover: hover) {
   .btn-alerted:hover, #start-btn:hover, #restart-btn:hover  {

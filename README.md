@@ -8,4 +8,4 @@ Binary Decisions is an easy way to rank your options by deciding between two opt
 
 A small personal project created with vanilla Javascript, HTML, and CSS.
 
-###[Click here](https://markvicuna.github.io/binary-decisions/) to try it out.
+### [Click here](https://markvicuna.github.io/binary-decisions/) to try it out.

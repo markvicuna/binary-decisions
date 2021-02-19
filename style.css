@@ -4,11 +4,6 @@
   --bg-img-width: 200px;
   --bg-img-height: 200px;
   --bg-animation-duration: 15s;
-
-  --overlay-img-width: 0px;
-  --overlay-img-height: 1340px;
-  --overlay-animation-duration: 1s;
-
 }
 
 
@@ -33,27 +28,6 @@
 @keyframes bg-scrolling {
   100% {
     background-position: var(--bg-img-width) var(--bg-img-height);
-  }
-}
-
-@-webkit-keyframes overlay-scrolling {
-  100% {
-    background-position: var(--overlay-img-width) var(--overlay-img-height);
-  }
-}
-@-moz-keyframes overlay-scrolling {
-  100% {
-    background-position: var(--overlay-img-width) var(--overlay-img-height);
-  }
-}
-@-o-keyframes overlay-scrolling {
-  100% {
-    background-position: var(--overlay-img-width) var(--overlay-img-height);
-  }
-}
-@keyframes overlay-scrolling {
-  100% {
-    background-position: var(--overlay-img-width) var(--overlay-img-height);
   }
 }
 
@@ -84,29 +58,6 @@ body {
   animation-timing-function: linear;
   ;
 }
-
-/* body::before {
-  content: '';
-  position: absolute;
-  background: url('./img/grain-texture-1.jpg') repeat 0 0;
-
-  -webkit-animation: overlay-scrolling var(--overlay-animation-duration) infinite;
-  -moz-animation: overlay-scrolling var(--overlay-animation-duration) infinite;
-  -o-animation:overlay-scrolling var(--overlay-animation-duration) infinite;
-  animation: overlay-scrolling var(--overlay-animation-duration) infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -o-animation-timing-function: linear;
-  animation-timing-function: linear;
-
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  mix-blend-mode: exclusion;
-  z-index: -1;
-} */
 
 .container {
   display: flex;
@@ -365,7 +316,7 @@ body {
   font-size: 22px;
   line-height: 1;
   color: rgb(255, 60, 60);
-  margin-right: 5px;
+  margin-right: 10px;
   width: 30px;
 }
 
